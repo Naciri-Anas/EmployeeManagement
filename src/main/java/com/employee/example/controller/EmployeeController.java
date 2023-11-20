@@ -5,9 +5,7 @@ import com.employee.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class EmployeeController {
@@ -29,8 +27,20 @@ public class EmployeeController {
     @PostMapping("/save")
     public String SaveEmployee (@ModelAttribute("employee") Employee employee){
         employeeService.save(employee);
-        return "redirect :/";
+        return "redirect:/";
 
 
+    }
+    @GetMapping("updateform/{Id}")
+    public String UpdateFrom(@PathVariable(value = "Id") Long Id,Model model ){
+        Employee employee  = employeeService.getById(Id);
+        model.addAttribute("employee",employee);
+        return "update";
+
+    }
+    @DeleteMapping("/delete/{Id}")
+    public String deleteById(@PathVariable(value = "Id") Long Id){
+        employeeService.deleteById(Id);
+        return "redirect:/";
     }
 }
