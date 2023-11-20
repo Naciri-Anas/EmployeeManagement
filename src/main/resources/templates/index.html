@@ -9,36 +9,29 @@
 <body>
 <div class="container my-2" align="center">
     <h3> Employee List </h3>
-    <a th:href = "@{/add}" class="btn btn-primary btn-sm mb-3"> Add new Employee </a>
+    <a th:href="@{/add}" class="btn btn-primary btn-sm mb-3"> Add new Employee </a>
     <table style="width: 80%" border="1" >
         <thead>
         <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Age<th>
-            <th>Designation<th>
-            <th>Update<th>
-            <th>Delete<th>
-
+            <th>Age</th>
+            <th>Designation</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-            <tr th:each="employee:${allemplist}">
-                <td th:text="${employee.email}"></td>
-                <td th:text="${employee.age}"></td>
-                <td th:text="${employee.designation}"></td>
-                <td th:text="${employee.name}"></td>
-                <td> <a href="@{/updateform/{Id} (Id={employee.Id})}" class="bnt btn-primary">update</a> </td>
-                <td> <a href="@{/delete/{Id} (Id={employee.Id})}" class="bnt btn-primary">Delete</a> </td>
-
+        <tr th:each="employee : ${allemplist}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.age}"></td>
+            <td th:text="${employee.designation}"></td>
+            <td> <a th:href="@{/updateform/{Id}(Id=${employee.id})}" class="btn btn-primary">Update</a> </td>
+            <td> <a th:href="@{/delete/{Id}(Id=${employee.id})}" class="btn btn-primary">Delete</a> </td>
+        </tr>
         </tbody>
     </table>
 </div>
 </body>
 </html>
-
-
-
-
-
-
