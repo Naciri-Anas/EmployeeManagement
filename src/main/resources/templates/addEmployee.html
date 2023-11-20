@@ -11,7 +11,7 @@
     <h1> Employee Management System </h1>
     <hr>
     <h2> Save Employee </h2>
-    <form action="#" th:action="@{/save}" th:object="${employee}">
+    <form action="#" th:action="@{/save}" th:object="${employee}" method="post">
         <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
         <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
         <input type="text" th:field="*{age}" placeholder="Age" class="form-control mb-4 col-4">
